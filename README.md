@@ -4,6 +4,9 @@
 # biathlonResults
 
 <!-- badges: start -->
+
+[![R CMD
+Check](https://github.com/thieled/biathlonResults/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/thieled/biathlonResults/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 biathlonResults is an inofficial wrapper around the API provided by

@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # biathlonResults
 
 <!-- badges: start -->
+[![R CMD Check](https://github.com/thieled/biathlonResults/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/thieled/biathlonResults/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 biathlonResults is an inofficial wrapper around the API provided by [biathlonresults.com](https://biathlonresults.com/). The API is free and public, but undocumented. I drew on [this](https://github.com/prtkv/biathlonresults/blob/master/biathlonresults/api.py) implementation in python.
