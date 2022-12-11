@@ -1,0 +1,61 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# biathlonResults
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+biathlonResults is an inofficial wrapper around the API provided by [biathlonresults.com](https://biathlonresults.com/). The API is free and public, but undocumented. I drew on [this](https://github.com/prtkv/biathlonresults/blob/master/biathlonresults/api.py) implementation in python.
+
+The package covers most of the API's functions and follows a [tidy-data](https://r4ds.had.co.nz/tidy-data.html) logic in the returned output (...well, mostly).
+
+
+## Installation
+
+You can install the development version of biathlonResults from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("thieled/biathlonResults")
+```
+
+## Example
+
+Here are a few examples how to use it. To get a list of all cups this season, call:
+
+```{r example}
+library(biathlonResults)
+library(dplyr)
+get_cups("2223") %>% select(CupId, Description, Level) %>% head(3)
+```
+Now, lets get the current (Season 22/23) Women's World Cup:
+```{r}
+get_cup_results("BT2223SWRLCP__SWTS") %>% select(Rank, IBUId, Name) %>% head(3)
+```
+
+Let's get Tandrevold's complete race result record and her skiiing and shooting stats of the past 4 seasons:
+```{r}
+get_results("BTNOR22309199601") %>% head(3) %>% select(RaceId, Comp, Place, Rank, Pen, Shootings)
+
+get_stats("BTNOR22309199601")  %>% select(FullName, starts_with("Stat"))
+```
+Of course, we can also get the results of a specific race:
+```{r}
+get_race_results("BT2223SWRLCP02SMPU") %>% select(Comp.Description, Event.Organizer,
+                                                  ShortName, Rank, TotalTime, Behind, Shootings) %>% head()
+```
+
+Have fun!
